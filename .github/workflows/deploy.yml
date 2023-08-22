@@ -6,7 +6,13 @@ on:
 
 jobs:
   deploy:
+    name: Upload release to TestPyPI and PyPi
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/dotmagic
+    permissions:
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
