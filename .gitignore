@@ -1,5 +1,5 @@
 __pycache__/
 build/
 dist/
-src/*.egg-info/
+*.egg-info/
 .pytest_cache/
