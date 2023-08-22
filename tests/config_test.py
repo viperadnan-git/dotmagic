@@ -1,6 +1,6 @@
 import unittest
 
-from src.config import Config, ConfigParse
+from dotmagic.config import Config, ConfigParse
 
 
 class TestConfigParse(unittest.TestCase):

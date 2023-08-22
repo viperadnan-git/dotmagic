@@ -1,6 +1,6 @@
 import unittest
 
-from src.utils import dotdict, seconds
+from dotmagic.utils import dotdict, seconds
 
 
 class TestDotDict(unittest.TestCase):
