@@ -1,39 +1,46 @@
 name: CD
 
 on:
-  release:
-    types: [created]
+    release:
+        types: [created]
+
+concurrency:
+    group: ${{ github.workflow }}
 
 jobs:
-  deploy:
-    name: Upload release to TestPyPI and PyPi
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/dotmagic
-    permissions:
-      id-token: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    deploy:
+        name: Upload release to TestPyPI and PyPi
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+        runs-on: ubuntu-latest
 
-      - name: Install dependencies
-        run: pip install --upgrade setuptools wheel
+        environment:
+            name: pypi
+            url: https://pypi.org/p/dotmagic
 
-      - name: Build and package
-        run: python setup.py sdist bdist_wheel
+        permissions:
+            id-token: write
 
-      - name: Publish 📦 to Test PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-          skip-existing: true
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-      - name: Publish 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+            - name: Set up Python
+              uses: actions/setup-python@v4
+
+            - name: Install dependencies
+              run: pip install --upgrade setuptools wheel
+
+            - name: Build and package
+              run: python setup.py sdist bdist_wheel
+
+            - name: Publish 📦 to Test PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+                  repository-url: https://test.pypi.org/legacy/
+                  skip-existing: true
+
+            - name: Publish 📦 to PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  password: ${{ secrets.PYPI_API_TOKEN }}

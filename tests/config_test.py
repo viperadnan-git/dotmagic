@@ -1,9 +1,9 @@
 import unittest
 
-from src.config import ConfigParse, Config
+from src.config import Config, ConfigParse
+
 
 class TestConfigParse(unittest.TestCase):
-
     def test_get_attribute(self):
         config = ConfigParse({"PORT": "8080"})
         self.assertEqual(config.PORT, 8080)
@@ -32,7 +32,6 @@ class TestConfigParse(unittest.TestCase):
 
 
 class TestConfig(unittest.TestCase):
-
     def test_loading_from_dict(self):
         config = Config(config={"PORT": "8080"})
         self.assertEqual(config.PORT, 8080)
@@ -56,5 +55,6 @@ class TestConfig(unittest.TestCase):
         with self.assertRaises(TypeError):
             config = Config(config=123)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

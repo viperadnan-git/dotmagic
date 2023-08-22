@@ -1,10 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
+
 from src import __version__ as src_version
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open('requirements.txt') as f:
+with open("requirements.txt") as f:
     requirements = f.read().splitlines()
 
 setup(
@@ -19,7 +20,7 @@ setup(
     download_url=f"https://github.com/viperadnan-git/gdnan/archive/v{src_version}.tar.gz",
     keywords=["environment", "variables", "dotenv", "env", "config", "configuration"],
     packages=find_packages(where="src"),
-    package_dir = {"": "src"},
+    package_dir={"": "src"},
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
@@ -27,7 +28,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
     ],
     python_requires=">=3.8",
     py_modules=["dotmagic"],

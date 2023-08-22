@@ -1,7 +1,7 @@
 import os
+from typing import Union
 
 from dotenv import dotenv_values
-from typing import Union
 
 
 class ConfigParse:
@@ -33,6 +33,7 @@ class ConfigParse:
         >>> config.PORT == config["PORT"]
         True
     """
+
     def __init__(self, config: dict, required: bool = False):
         self.__config = config
         self.__required = required
@@ -89,7 +90,7 @@ class Config(ConfigParse):
             `default` (dict, optional): Path to a default .env file or a dict. Defaults to {}.
 
             `override` (bool, optional): Whether to override the environment variables with the config. Defaults to False.
-        
+
         Raises:
             FileNotFoundError: If the config file is not found.
 
@@ -97,7 +98,7 @@ class Config(ConfigParse):
 
         Returns:
             Config: The loaded config.
-            
+
         Examples:
             >>> config = Config()
             >>> config.PORT

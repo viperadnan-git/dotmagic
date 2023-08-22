@@ -42,8 +42,9 @@ jobs:
                     - windows-latest
                     - ubuntu-latest
 
-        runs-on: ${{ matrix.os }}
         name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3

@@ -24,6 +24,7 @@ class dotdict(dict):
         >>> dotdict({"key": "value"})["key"] == dotdict({"key": "value"}).key
         True
     """
+
     __getattr__ = dict.get
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
@@ -38,7 +39,7 @@ def seconds(time_string):
 
     Args:
         `time_string` (str): The time string to convert.
-    
+
     Raises:
         ValueError: If the time string is invalid.
 
@@ -55,11 +56,11 @@ def seconds(time_string):
         >>> seconds("1d1h1m1s")
         90061
     """
-    pattern = r'^(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$'
+    pattern = r"^(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$"
     matches = re.match(pattern, time_string)
     if not matches:
         raise ValueError(
-            "Invalid time string. Valid examples: 1d, 1d1h, 1d1h1m, 1d1h1m1s") # fmt: skip
+            "Invalid time string. Valid examples: 1d, 1d1h, 1d1h1m, 1d1h1m1s")  # fmt: skip
     days = int(matches.group(1) or 0)
     hours = int(matches.group(2) or 0)
     minutes = int(matches.group(3) or 0)

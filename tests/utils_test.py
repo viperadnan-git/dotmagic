@@ -2,14 +2,14 @@ import unittest
 
 from src.utils import dotdict, seconds
 
-class TestDotDict(unittest.TestCase):
 
+class TestDotDict(unittest.TestCase):
     def test_dot_access(self):
         data = {"key": "value", "nested": {"nested_key": "nested_value"}}
         dot_data = dotdict(data)
 
         self.assertEqual(dot_data.key, "value")
-        self.assertEqual(dot_data.nested['nested_key'], "nested_value")
+        self.assertEqual(dot_data.nested["nested_key"], "nested_value")
 
     def test_bracket_access(self):
         data = {"key": "value", "nested": {"nested_key": "nested_value"}}
@@ -26,8 +26,8 @@ class TestDotDict(unittest.TestCase):
 
         self.assertEqual(dot_data1.key, dot_data2.key)
 
-class TestSeconds(unittest.TestCase):
 
+class TestSeconds(unittest.TestCase):
     def test_valid_time_strings(self):
         self.assertEqual(seconds("1d"), 86400)
         self.assertEqual(seconds("1d1h"), 90000)
@@ -50,5 +50,6 @@ class TestSeconds(unittest.TestCase):
         with self.assertRaises(ValueError):
             seconds("1d1h1m1s1s")  # Duplicate 's' at the end
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
