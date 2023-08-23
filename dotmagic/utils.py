@@ -65,6 +65,5 @@ def seconds(time_string):
     hours = int(matches.group(2) or 0)
     minutes = int(matches.group(3) or 0)
     seconds = int(matches.group(4) or 0)
-    print(days, hours, minutes, seconds)
     total_seconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds
     return total_seconds
